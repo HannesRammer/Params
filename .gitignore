@@ -1,0 +1,13 @@
+
+#INTELJ
+.idea/
+
+
+
+#Dart
+
+packages/
+pubspec.lock
+.settings/
+
+
