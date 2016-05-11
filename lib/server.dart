@@ -1,3 +1,4 @@
+@MirrorsUsed(symbols: 'server', override: '*')
 library params.server;
 import "dart:mirrors";
 
