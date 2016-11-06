@@ -3,13 +3,14 @@ library params.client;
 
 import "dart:mirrors";
 import "dart:html";
+import "dart:async";
 
 Map params = {};
 
-void initParams() {
+Future initParams() async {
     if (window.location.search != "") {
         List list = window.location.search.replaceFirst("?", "").split("&");
-        list.forEach((pair) {
+        await list.forEach((pair) {
             List pairList = pair.split("=");
             params[pairList[0]] = pairList[1];
         });
@@ -18,13 +19,13 @@ void initParams() {
     print("Client params: ${params.toString()}");
 }
 
-void addlocationToParams(var object) {
+Future addlocationToParams(var object) async {
     InstanceMirror im = reflect(object);
     ClassMirror cm = im.type;
 
     var decls = cm.declarations.values.where((dm) => dm is MethodMirror &&
-            dm.isSetter == false && dm.isRegularMethod == false);
-    decls.forEach((dm) {
+                                                     dm.isSetter == false && dm.isRegularMethod == false);
+    await decls.forEach((dm) {
         var key = MirrorSystem.getName(dm.simpleName);
         var val = im
                 .getField(dm.simpleName)

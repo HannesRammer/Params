@@ -1,5 +1,5 @@
 name: params
-version: 0.0.3
+version: 0.0.4
 author: Hannes Rammer <Hannes.Rammer@gmail.com>
 description: Params provides 'window.location.search' on client and 'request.requestedUrl.query' on server as a Map
 homepage: https://github.com/HannesRammer/Params

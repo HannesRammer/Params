@@ -1,4 +1,4 @@
-##Params 0.0.2
+##Params
 
 Params is a package that provides window.location.search on client and request.requestedUrl.query on server as a Map
 
@@ -14,7 +14,7 @@ Params is a package that provides window.location.search on client and request.r
     
 2. At the beginning of your main function call add 
 
-        initParams();
+        await initParams();
 
 3. If the window location is http://127.0.0.1:3030/Rainbow/web/rainbow.html?id=1&language=dart the Standart client params map looks like this 
 
@@ -35,8 +35,8 @@ Params is a package that provides window.location.search on client and request.r
        
  Now you can access the search values using **params['key']** like below
  
-       void main() {
-         initParams();
+       Future main() async{
+         await initParams();
          if(params['id'] != null){
            String id = params['id'];
            String language = params['language'];
@@ -58,7 +58,7 @@ Params is a package that provides window.location.search on client and request.r
     
 2. At the beginning of your server.listen function add 
 
-        initParams();
+        await initParams();
 
 3. If a HTTP request is made to http://127.0.0.1:8090/loadItem?id=1&language=dart
 
@@ -86,8 +86,8 @@ Params is a package that provides window.location.search on client and request.r
 
  Now you can access the query values using **params['key']** like below
    
-       server.listen((HttpRequest request) {
-         initParams(request);
+       server.listen((HttpRequest request) async {
+         await initParams(request);
          //if request.requestedUrl.query is "id=1&language=dart"
          String id = params['id'];
          String language = params['language'];
@@ -106,3 +106,6 @@ Params is a package that provides window.location.search on client and request.r
        } 
  
 
+###changelog 
+
+v 0.0.4 - adopted to await async 
